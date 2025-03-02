@@ -138,3 +138,113 @@ pub async fn request_screen_recording_permission() {
     #[cfg(target_os = "macos")]
     ScreenCaptureAccess::request(&ScreenCaptureAccess::default());
 }
+
+/// Check microphone permission.
+///
+/// # Returns
+/// - `bool`: `true` if microphone permission is granted, `false` otherwise.
+///
+/// # Example
+/// ```
+/// use tauri_plugin_macos_permissions::check_microphone_permission;
+///
+/// let authorized = check_microphone_permission().await;
+/// println!("Authorized: {}", authorized); // false
+/// ```
+#[command]
+pub async fn check_microphone_permission() -> bool {
+    #[cfg(target_os = "macos")]
+    {
+        // On macOS, we need to check AVCaptureDevice authorization for microphone
+        use objc::{class, msg_send, sel, sel_impl};
+        use objc_foundation::{INSString, NSString};
+
+        unsafe {
+            let av_media_type = NSString::from_str("vide"); // AVMediaTypeAudio constant
+            let auth_status: i32 = msg_send![class!(AVCaptureDevice),
+                                            authorizationStatusForMediaType:av_media_type];
+            // 3 is AVAuthorizationStatusAuthorized
+            return auth_status == 3;
+        }
+    }
+
+    #[cfg(not(target_os = "macos"))]
+    return true;
+}
+
+/// Request microphone permission.
+///
+/// # Example
+/// ```
+/// use tauri_plugin_macos_permissions::request_microphone_permission;
+///
+/// request_microphone_permission().await;
+/// ```
+#[command]
+pub async fn request_microphone_permission() -> Result<(), String> {
+    #[cfg(target_os = "macos")]
+    {
+        // Open system preferences to microphone permissions
+        Command::new("open")
+            .arg("x-apple.systempreferences:com.apple.preference.security?Privacy_Microphone")
+            .output()
+            .map_err(|error| error.to_string())?;
+    }
+
+    Ok(())
+}
+
+/// Check audio permission.
+///
+/// # Returns
+/// - `bool`: `true` if audio permission is granted, `false` otherwise.
+///
+/// # Example
+/// ```
+/// use tauri_plugin_macos_permissions::check_audio_permission;
+///
+/// let authorized = check_audio_permission().await;
+/// println!("Authorized: {}", authorized); // false
+/// ```
+#[command]
+pub async fn check_audio_permission() -> bool {
+    #[cfg(target_os = "macos")]
+    {
+        // On macOS, we need to check AVCaptureDevice authorization for audio
+        use objc::{class, msg_send, sel, sel_impl};
+        use objc_foundation::{INSString, NSString};
+
+        unsafe {
+            let av_media_type = NSString::from_str("soun"); // AVMediaTypeAudio constant
+            let auth_status: i32 = msg_send![class!(AVCaptureDevice),
+                                            authorizationStatusForMediaType:av_media_type];
+            // 3 is AVAuthorizationStatusAuthorized
+            return auth_status == 3;
+        }
+    }
+
+    #[cfg(not(target_os = "macos"))]
+    return true;
+}
+
+/// Request audio permission.
+///
+/// # Example
+/// ```
+/// use tauri_plugin_macos_permissions::request_audio_permission;
+///
+/// request_audio_permission().await;
+/// ```
+#[command]
+pub async fn request_audio_permission() -> Result<(), String> {
+    #[cfg(target_os = "macos")]
+    {
+        // Open system preferences to audio permissions
+        Command::new("open")
+            .arg("x-apple.systempreferences:com.apple.preference.security?Privacy_AudioRecording")
+            .output()
+            .map_err(|error| error.to_string())?;
+    }
+
+    Ok(())
+}
