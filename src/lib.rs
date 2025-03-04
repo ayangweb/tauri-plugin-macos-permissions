@@ -16,7 +16,11 @@ pub fn init<R: Runtime>() -> TauriPlugin<R> {
             commands::check_full_disk_access_permission,
             commands::request_full_disk_access_permission,
             commands::check_screen_recording_permission,
-            commands::request_screen_recording_permission
+            commands::request_screen_recording_permission,
+            commands::check_microphone_permission,
+            commands::request_microphone_permission,
+            commands::check_audio_permission,
+            commands::request_audio_permission
         ])
         .build()
 }

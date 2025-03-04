@@ -305,6 +305,16 @@
           "const": "deny-check-accessibility-permission"
         },
         {
+          "description": "Enables the check_audio_permission command without any pre-configured scope.",
+          "type": "string",
+          "const": "allow-check-audio-permission"
+        },
+        {
+          "description": "Denies the check_audio_permission command without any pre-configured scope.",
+          "type": "string",
+          "const": "deny-check-audio-permission"
+        },
+        {
           "description": "Enables the check_full_disk_access_permission command without any pre-configured scope.",
           "type": "string",
           "const": "allow-check-full-disk-access-permission"
@@ -313,6 +323,16 @@
           "description": "Denies the check_full_disk_access_permission command without any pre-configured scope.",
           "type": "string",
           "const": "deny-check-full-disk-access-permission"
+        },
+        {
+          "description": "Enables the check_microphone_permission command without any pre-configured scope.",
+          "type": "string",
+          "const": "allow-check-microphone-permission"
+        },
+        {
+          "description": "Denies the check_microphone_permission command without any pre-configured scope.",
+          "type": "string",
+          "const": "deny-check-microphone-permission"
         },
         {
           "description": "Enables the check_screen_recording_permission command without any pre-configured scope.",
@@ -335,6 +355,16 @@
           "const": "deny-request-accessibility-permission"
         },
         {
+          "description": "Enables the request_audio_permission command without any pre-configured scope.",
+          "type": "string",
+          "const": "allow-request-audio-permission"
+        },
+        {
+          "description": "Denies the request_audio_permission command without any pre-configured scope.",
+          "type": "string",
+          "const": "deny-request-audio-permission"
+        },
+        {
           "description": "Enables the request_full_disk_access_permission command without any pre-configured scope.",
           "type": "string",
           "const": "allow-request-full-disk-access-permission"
@@ -343,6 +373,16 @@
           "description": "Denies the request_full_disk_access_permission command without any pre-configured scope.",
           "type": "string",
           "const": "deny-request-full-disk-access-permission"
+        },
+        {
+          "description": "Enables the request_microphone_permission command without any pre-configured scope.",
+          "type": "string",
+          "const": "allow-request-microphone-permission"
+        },
+        {
+          "description": "Denies the request_microphone_permission command without any pre-configured scope.",
+          "type": "string",
+          "const": "deny-request-microphone-permission"
         },
         {
           "description": "Enables the request_screen_recording_permission command without any pre-configured scope.",
