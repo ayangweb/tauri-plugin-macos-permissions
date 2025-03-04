@@ -6,6 +6,8 @@ use {
     macos_accessibility_client::accessibility::{
         application_is_trusted, application_is_trusted_with_prompt,
     },
+    objc::{class, msg_send, sel, sel_impl},
+    objc_foundation::{INSString, NSString},
     std::{fs::read_dir, process::Command},
     tauri::Manager,
 };
@@ -155,10 +157,6 @@ pub async fn request_screen_recording_permission() {
 pub async fn check_microphone_permission() -> bool {
     #[cfg(target_os = "macos")]
     {
-        // On macOS, we need to check AVCaptureDevice authorization for microphone
-        use objc::{class, msg_send, sel, sel_impl};
-        use objc_foundation::{INSString, NSString};
-
         unsafe {
             let av_media_type = NSString::from_str("vide"); // AVMediaTypeAudio constant
             let auth_status: i32 = msg_send![class!(AVCaptureDevice),
@@ -210,10 +208,6 @@ pub async fn request_microphone_permission() -> Result<(), String> {
 pub async fn check_audio_permission() -> bool {
     #[cfg(target_os = "macos")]
     {
-        // On macOS, we need to check AVCaptureDevice authorization for audio
-        use objc::{class, msg_send, sel, sel_impl};
-        use objc_foundation::{INSString, NSString};
-
         unsafe {
             let av_media_type = NSString::from_str("soun"); // AVMediaTypeAudio constant
             let auth_status: i32 = msg_send![class!(AVCaptureDevice),

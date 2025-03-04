@@ -13,14 +13,12 @@ export const COMMAND = {
     "plugin:macos-permissions|check_screen_recording_permission",
   REQUEST_SCREEN_RECORDING_PERMISSION:
     "plugin:macos-permissions|request_screen_recording_permission",
-  CHECK_MICROPHONE_PERMISSION: 
+  CHECK_MICROPHONE_PERMISSION:
     "plugin:macos-permissions|check_microphone_permission",
   REQUEST_MICROPHONE_PERMISSION:
     "plugin:macos-permissions|request_microphone_permission",
-  CHECK_AUDIO_PERMISSION:
-    "plugin:macos-permissions|check_audio_permission",
-  REQUEST_AUDIO_PERMISSION:
-    "plugin:macos-permissions|request_audio_permission",
+  CHECK_AUDIO_PERMISSION: "plugin:macos-permissions|check_audio_permission",
+  REQUEST_AUDIO_PERMISSION: "plugin:macos-permissions|request_audio_permission",
 };
 
 /**

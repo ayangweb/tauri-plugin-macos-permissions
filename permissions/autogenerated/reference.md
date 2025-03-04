@@ -8,6 +8,10 @@ Default permissions for the plugin
 - `allow-request-full-disk-access-permission`
 - `allow-check-screen-recording-permission`
 - `allow-request-screen-recording-permission`
+- `allow-check-microphone-permission`
+- `allow-request-microphone-permission`
+- `allow-check-audio-permission`
+- `allow-request-audio-permission`
 
 ## Permission Table
 
@@ -47,6 +51,32 @@ Denies the check_accessibility_permission command without any pre-configured sco
 <tr>
 <td>
 
+`macos-permissions:allow-check-audio-permission`
+
+</td>
+<td>
+
+Enables the check_audio_permission command without any pre-configured scope.
+
+</td>
+</tr>
+
+<tr>
+<td>
+
+`macos-permissions:deny-check-audio-permission`
+
+</td>
+<td>
+
+Denies the check_audio_permission command without any pre-configured scope.
+
+</td>
+</tr>
+
+<tr>
+<td>
+
 `macos-permissions:allow-check-full-disk-access-permission`
 
 </td>
@@ -66,6 +96,32 @@ Enables the check_full_disk_access_permission command without any pre-configured
 <td>
 
 Denies the check_full_disk_access_permission command without any pre-configured scope.
+
+</td>
+</tr>
+
+<tr>
+<td>
+
+`macos-permissions:allow-check-microphone-permission`
+
+</td>
+<td>
+
+Enables the check_microphone_permission command without any pre-configured scope.
+
+</td>
+</tr>
+
+<tr>
+<td>
+
+`macos-permissions:deny-check-microphone-permission`
+
+</td>
+<td>
+
+Denies the check_microphone_permission command without any pre-configured scope.
 
 </td>
 </tr>
@@ -125,6 +181,32 @@ Denies the request_accessibility_permission command without any pre-configured s
 <tr>
 <td>
 
+`macos-permissions:allow-request-audio-permission`
+
+</td>
+<td>
+
+Enables the request_audio_permission command without any pre-configured scope.
+
+</td>
+</tr>
+
+<tr>
+<td>
+
+`macos-permissions:deny-request-audio-permission`
+
+</td>
+<td>
+
+Denies the request_audio_permission command without any pre-configured scope.
+
+</td>
+</tr>
+
+<tr>
+<td>
+
 `macos-permissions:allow-request-full-disk-access-permission`
 
 </td>
@@ -144,6 +226,32 @@ Enables the request_full_disk_access_permission command without any pre-configur
 <td>
 
 Denies the request_full_disk_access_permission command without any pre-configured scope.
+
+</td>
+</tr>
+
+<tr>
+<td>
+
+`macos-permissions:allow-request-microphone-permission`
+
+</td>
+<td>
+
+Enables the request_microphone_permission command without any pre-configured scope.
+
+</td>
+</tr>
+
+<tr>
+<td>
+
+`macos-permissions:deny-request-microphone-permission`
+
+</td>
+<td>
+
+Denies the request_microphone_permission command without any pre-configured scope.
 
 </td>
 </tr>

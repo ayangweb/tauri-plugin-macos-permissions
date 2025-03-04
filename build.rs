@@ -5,6 +5,10 @@ const COMMANDS: &[&str] = &[
     "request_full_disk_access_permission",
     "check_screen_recording_permission",
     "request_screen_recording_permission",
+    "check_microphone_permission",
+    "request_microphone_permission",
+    "check_audio_permission",
+    "request_audio_permission",
 ];
 
 fn main() {
