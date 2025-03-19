@@ -62,6 +62,8 @@ console.log(authorized); // true
 | `requestFullDiskAccessPermission`  | Request full disk access permission. |
 | `checkScreenRecordingPermission`   | Check screen recording permission.   |
 | `requestScreenRecordingPermission` | Request screen recording permission. |
+| `checkMicrophonePermission`        | Check microphone permission.         |
+| `requestMicrophonePermission`      | Request microphone permission.       |
 
 ## Example
 

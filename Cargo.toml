@@ -12,15 +12,18 @@ exclude = ["/examples", "/webview-dist", "/webview-src", "/node_modules"]
 links = "tauri-plugin-macos-permissions"
 
 [dependencies]
-tauri = { version = "2.1.0" }
-serde = "1.0"
+tauri = { version = "2" }
+serde = "1"
 thiserror = "2"
-objc = "0.2.7"
-objc-foundation = "0.1.1"
 
 [build-dependencies]
-tauri-plugin = { version = "2.0.2", features = ["build"] }
+tauri-plugin = { version = "2", features = ["build"] }
 
 [target."cfg(target_os = \"macos\")".dependencies]
 macos-accessibility-client = "0.0.1"
-core-graphics = "0.24.0"
+core-graphics = "0.24"
+objc = "0.2"
+objc-foundation = "0.1"
+
+[features]
+cargo-clippy = []

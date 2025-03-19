@@ -9,8 +9,6 @@ import {
   requestScreenRecordingPermission,
   checkMicrophonePermission,
   requestMicrophonePermission,
-  checkAudioPermission,
-  requestAudioPermission,
 } from "tauri-plugin-macos-permissions-api";
 
 const App = () => {
@@ -19,7 +17,6 @@ const App = () => {
     fullDiskAccessPermission: false,
     screenRecordingPermission: false,
     microphonePermission: false,
-    audioPermission: false,
   });
 
   useMount(async () => {
@@ -27,7 +24,6 @@ const App = () => {
     state.fullDiskAccessPermission = await checkFullDiskAccessPermission();
     state.screenRecordingPermission = await checkScreenRecordingPermission();
     state.microphonePermission = await checkMicrophonePermission();
-    state.audioPermission = await checkAudioPermission();
   });
 
   const data = useCreation(() => {
@@ -65,11 +61,6 @@ const App = () => {
         label: "Microphone Permission",
         value: state.microphonePermission,
         check: requestMicrophonePermission,
-      },
-      {
-        label: "Audio Permission",
-        value: state.audioPermission,
-        check: requestAudioPermission,
       },
     ];
   }, [{ ...state }]);
