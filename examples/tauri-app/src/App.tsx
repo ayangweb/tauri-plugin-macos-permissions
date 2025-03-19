@@ -35,11 +35,10 @@ const App = () => {
           await requestAccessibilityPermission();
 
           const check = async () => {
-            const opened = await checkAccessibilityPermission();
+            state.accessibilityPermission =
+              await checkAccessibilityPermission();
 
-            state.accessibilityPermission = opened;
-
-            if (opened) return;
+            if (state.accessibilityPermission) return;
 
             setTimeout(check, 1000);
           };
@@ -60,7 +59,19 @@ const App = () => {
       {
         label: "Microphone Permission",
         value: state.microphonePermission,
-        check: requestMicrophonePermission,
+        check: async () => {
+          await requestMicrophonePermission();
+
+          const check = async () => {
+            state.microphonePermission = await checkMicrophonePermission();
+
+            if (state.microphonePermission) return;
+
+            setTimeout(check, 1000);
+          };
+
+          check();
+        },
       },
     ];
   }, [{ ...state }]);

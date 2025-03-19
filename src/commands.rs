@@ -8,7 +8,7 @@ use {
     },
     objc::{class, msg_send, sel, sel_impl},
     objc_foundation::{INSString, NSString},
-    std::{fs::read_dir, process::Command},
+    std::{fs::read_dir, process::Command, ptr},
     tauri::Manager,
 };
 
@@ -158,10 +158,11 @@ pub async fn check_microphone_permission() -> bool {
     #[cfg(target_os = "macos")]
     {
         unsafe {
-            let av_media_type = NSString::from_str("vide"); // AVMediaTypeAudio constant
-            let auth_status: i32 = msg_send![class!(AVCaptureDevice),
-                                            authorizationStatusForMediaType:av_media_type];
-            // 3 is AVAuthorizationStatusAuthorized
+            let auth_status: i32 = msg_send![
+                class!(AVCaptureDevice),
+                authorizationStatusForMediaType: NSString::from_str("soun")
+            ];
+
             return auth_status == 3;
         }
     }
@@ -182,11 +183,13 @@ pub async fn check_microphone_permission() -> bool {
 pub async fn request_microphone_permission() -> Result<(), String> {
     #[cfg(target_os = "macos")]
     {
-        // Open system preferences to microphone permissions
-        Command::new("open")
-            .arg("x-apple.systempreferences:com.apple.preference.security?Privacy_Microphone")
-            .output()
-            .map_err(|error| error.to_string())?;
+        unsafe {
+            let _: () = msg_send![
+                class!(AVCaptureDevice),
+                requestAccessForMediaType: NSString::from_str("soun")
+                completionHandler: ptr::null::<()>()
+            ];
+        }
     }
 
     Ok(())
