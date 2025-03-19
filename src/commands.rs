@@ -6,9 +6,9 @@ use {
     macos_accessibility_client::accessibility::{
         application_is_trusted, application_is_trusted_with_prompt,
     },
-    objc::{class, msg_send, sel, sel_impl},
-    objc_foundation::{INSString, NSString},
-    std::{fs::read_dir, process::Command, ptr},
+    objc2::{class, msg_send, runtime::Bool},
+    objc2_foundation::NSString,
+    std::{fs::read_dir, process::Command},
     tauri::Manager,
 };
 
@@ -158,12 +158,13 @@ pub async fn check_microphone_permission() -> bool {
     #[cfg(target_os = "macos")]
     {
         unsafe {
-            let auth_status: i32 = msg_send![
+            let av_media_type = NSString::from_str("soun");
+            let status: i32 = msg_send![
                 class!(AVCaptureDevice),
-                authorizationStatusForMediaType: NSString::from_str("soun")
+                authorizationStatusForMediaType: &*av_media_type
             ];
 
-            return auth_status == 3;
+            status == 3
         }
     }
 
@@ -184,10 +185,13 @@ pub async fn request_microphone_permission() -> Result<(), String> {
     #[cfg(target_os = "macos")]
     {
         unsafe {
+            let av_media_type = NSString::from_str("soun");
+            type CompletionBlock = Option<extern "C" fn(Bool)>;
+            let completion_block: CompletionBlock = None;
             let _: () = msg_send![
                 class!(AVCaptureDevice),
-                requestAccessForMediaType: NSString::from_str("soun")
-                completionHandler: ptr::null::<()>()
+                requestAccessForMediaType: &*av_media_type,
+                completionHandler: completion_block
             ];
         }
     }

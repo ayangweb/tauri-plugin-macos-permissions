@@ -22,8 +22,8 @@ tauri-plugin = { version = "2", features = ["build"] }
 [target."cfg(target_os = \"macos\")".dependencies]
 macos-accessibility-client = "0.0.1"
 core-graphics = "0.24"
-objc = "0.2"
-objc-foundation = "0.1"
+objc2 = "0.6"
+objc2-foundation = "0.3"
 
 [features]
 cargo-clippy = []

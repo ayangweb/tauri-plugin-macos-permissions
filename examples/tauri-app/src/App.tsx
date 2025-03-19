@@ -47,16 +47,6 @@ const App = () => {
         },
       },
       {
-        label: "Full Disk Access Permission",
-        value: state.fullDiskAccessPermission,
-        check: requestFullDiskAccessPermission,
-      },
-      {
-        label: "Screen Recording Permission",
-        value: state.screenRecordingPermission,
-        check: requestScreenRecordingPermission,
-      },
-      {
         label: "Microphone Permission",
         value: state.microphonePermission,
         check: async () => {
@@ -72,6 +62,16 @@ const App = () => {
 
           check();
         },
+      },
+      {
+        label: "Full Disk Access Permission",
+        value: state.fullDiskAccessPermission,
+        check: requestFullDiskAccessPermission,
+      },
+      {
+        label: "Screen Recording Permission",
+        value: state.screenRecordingPermission,
+        check: requestScreenRecordingPermission,
       },
     ];
   }, [{ ...state }]);
