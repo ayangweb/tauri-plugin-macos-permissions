@@ -43,6 +43,22 @@ pub fn run() {
 }
 ```
 
+If you need to access the microphone or camera permissions, please update `src-tauri/Info.plist`：
+
+```diff
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+     ...
++    <key>NSMicrophoneUsageDescription</key>
++    <string>The app requires access to your microphone for the voice recording feature.</string>
++    <key>NSCameraUsageDescription</key>
++    <string>The app requires access to your camera for capturing photos and videos.</string>
+</dict>
+</plist>
+```
+
 Afterwards all the plugin's APIs are available through the JavaScript guest bindings:
 
 ```ts
@@ -93,7 +109,7 @@ pnpm tauri dev
 
 - Use [core-graphics](https://crates.io/crates/core-graphics) to check and request screen recording permission.
 
-- Use [objc2](https://github.com/madsmtm/objc2) to check and request microphone or camera permission.
+- Use [objc2](https://github.com/madsmtm/objc2) to check and request microphone or camera permissions.
 
 ## Who's Use It
 
