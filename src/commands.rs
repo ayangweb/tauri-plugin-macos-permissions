@@ -163,7 +163,6 @@ pub async fn check_microphone_permission() -> bool {
                 class!(AVCaptureDevice),
                 authorizationStatusForMediaType: &*av_media_type
             ];
-            println!("microphonePermissionStatus: {}", status);
 
             status == 3
         }
@@ -222,8 +221,6 @@ pub async fn check_camera_permission() -> bool {
                 class!(AVCaptureDevice),
                 authorizationStatusForMediaType: &*av_media_type
             ];
-
-            println!("cameraPermissionStatus: {}", status);
 
             status == 3
         }
