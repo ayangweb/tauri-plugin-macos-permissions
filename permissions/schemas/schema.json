@@ -305,6 +305,16 @@
           "const": "deny-check-accessibility-permission"
         },
         {
+          "description": "Enables the check_camera_permission command without any pre-configured scope.",
+          "type": "string",
+          "const": "allow-check-camera-permission"
+        },
+        {
+          "description": "Denies the check_camera_permission command without any pre-configured scope.",
+          "type": "string",
+          "const": "deny-check-camera-permission"
+        },
+        {
           "description": "Enables the check_full_disk_access_permission command without any pre-configured scope.",
           "type": "string",
           "const": "allow-check-full-disk-access-permission"
@@ -343,6 +353,16 @@
           "description": "Denies the request_accessibility_permission command without any pre-configured scope.",
           "type": "string",
           "const": "deny-request-accessibility-permission"
+        },
+        {
+          "description": "Enables the request_camera_permission command without any pre-configured scope.",
+          "type": "string",
+          "const": "allow-request-camera-permission"
+        },
+        {
+          "description": "Denies the request_camera_permission command without any pre-configured scope.",
+          "type": "string",
+          "const": "deny-request-camera-permission"
         },
         {
           "description": "Enables the request_full_disk_access_permission command without any pre-configured scope.",

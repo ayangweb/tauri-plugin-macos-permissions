@@ -163,6 +163,7 @@ pub async fn check_microphone_permission() -> bool {
                 class!(AVCaptureDevice),
                 authorizationStatusForMediaType: &*av_media_type
             ];
+            println!("microphonePermissionStatus: {}", status);
 
             status == 3
         }
@@ -186,6 +187,66 @@ pub async fn request_microphone_permission() -> Result<(), String> {
     {
         unsafe {
             let av_media_type = NSString::from_str("soun");
+            type CompletionBlock = Option<extern "C" fn(Bool)>;
+            let completion_block: CompletionBlock = None;
+            let _: () = msg_send![
+                class!(AVCaptureDevice),
+                requestAccessForMediaType: &*av_media_type,
+                completionHandler: completion_block
+            ];
+        }
+    }
+
+    Ok(())
+}
+
+/// Check camera permission.
+///
+/// # Returns
+/// - `bool`: `true` if camera permission is granted, `false` otherwise.
+///
+/// # Example
+/// ```
+/// use tauri_plugin_macos_permissions::check_camera_permission;
+///
+/// let authorized = check_camera_permission().await;
+/// println!("Authorized: {}", authorized); // false
+/// ```
+#[command]
+pub async fn check_camera_permission() -> bool {
+    #[cfg(target_os = "macos")]
+    {
+        unsafe {
+            let av_media_type = NSString::from_str("vide");
+            let status: i32 = msg_send![
+                class!(AVCaptureDevice),
+                authorizationStatusForMediaType: &*av_media_type
+            ];
+
+            println!("cameraPermissionStatus: {}", status);
+
+            status == 3
+        }
+    }
+
+    #[cfg(not(target_os = "macos"))]
+    return true;
+}
+
+/// Request camera permission.
+///
+/// # Example
+/// ```
+/// use tauri_plugin_macos_permissions::request_camera_permission;
+///
+/// request_camera_permission().await;
+/// ```
+#[command]
+pub async fn request_camera_permission() -> Result<(), String> {
+    #[cfg(target_os = "macos")]
+    {
+        unsafe {
+            let av_media_type = NSString::from_str("vide");
             type CompletionBlock = Option<extern "C" fn(Bool)>;
             let completion_block: CompletionBlock = None;
             let _: () = msg_send![

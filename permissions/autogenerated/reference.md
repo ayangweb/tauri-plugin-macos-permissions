@@ -10,6 +10,8 @@ Default permissions for the plugin
 - `allow-request-screen-recording-permission`
 - `allow-check-microphone-permission`
 - `allow-request-microphone-permission`
+- `allow-check-camera-permission`
+- `allow-request-camera-permission`
 
 ## Permission Table
 
@@ -42,6 +44,32 @@ Enables the check_accessibility_permission command without any pre-configured sc
 <td>
 
 Denies the check_accessibility_permission command without any pre-configured scope.
+
+</td>
+</tr>
+
+<tr>
+<td>
+
+`macos-permissions:allow-check-camera-permission`
+
+</td>
+<td>
+
+Enables the check_camera_permission command without any pre-configured scope.
+
+</td>
+</tr>
+
+<tr>
+<td>
+
+`macos-permissions:deny-check-camera-permission`
+
+</td>
+<td>
+
+Denies the check_camera_permission command without any pre-configured scope.
 
 </td>
 </tr>
@@ -146,6 +174,32 @@ Enables the request_accessibility_permission command without any pre-configured 
 <td>
 
 Denies the request_accessibility_permission command without any pre-configured scope.
+
+</td>
+</tr>
+
+<tr>
+<td>
+
+`macos-permissions:allow-request-camera-permission`
+
+</td>
+<td>
+
+Enables the request_camera_permission command without any pre-configured scope.
+
+</td>
+</tr>
+
+<tr>
+<td>
+
+`macos-permissions:deny-request-camera-permission`
+
+</td>
+<td>
+
+Denies the request_camera_permission command without any pre-configured scope.
 
 </td>
 </tr>

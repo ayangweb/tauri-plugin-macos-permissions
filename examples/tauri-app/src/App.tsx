@@ -9,6 +9,8 @@ import {
   requestScreenRecordingPermission,
   checkMicrophonePermission,
   requestMicrophonePermission,
+  checkCameraPermission,
+  requestCameraPermission,
 } from "tauri-plugin-macos-permissions-api";
 
 const App = () => {
@@ -17,6 +19,7 @@ const App = () => {
     fullDiskAccessPermission: false,
     screenRecordingPermission: false,
     microphonePermission: false,
+    cameraPermission: false,
   });
 
   useMount(async () => {
@@ -24,6 +27,7 @@ const App = () => {
     state.fullDiskAccessPermission = await checkFullDiskAccessPermission();
     state.screenRecordingPermission = await checkScreenRecordingPermission();
     state.microphonePermission = await checkMicrophonePermission();
+    state.cameraPermission = await checkCameraPermission();
   });
 
   const data = useCreation(() => {
@@ -47,6 +51,16 @@ const App = () => {
         },
       },
       {
+        label: "Full Disk Access Permission",
+        value: state.fullDiskAccessPermission,
+        check: requestFullDiskAccessPermission,
+      },
+      {
+        label: "Screen Recording Permission",
+        value: state.screenRecordingPermission,
+        check: requestScreenRecordingPermission,
+      },
+      {
         label: "Microphone Permission",
         value: state.microphonePermission,
         check: async () => {
@@ -64,14 +78,21 @@ const App = () => {
         },
       },
       {
-        label: "Full Disk Access Permission",
-        value: state.fullDiskAccessPermission,
-        check: requestFullDiskAccessPermission,
-      },
-      {
-        label: "Screen Recording Permission",
-        value: state.screenRecordingPermission,
-        check: requestScreenRecordingPermission,
+        label: "Camera Permission",
+        value: state.cameraPermission,
+        check: async () => {
+          await requestCameraPermission();
+
+          const check = async () => {
+            state.cameraPermission = await checkCameraPermission();
+
+            if (state.cameraPermission) return;
+
+            setTimeout(check, 1000);
+          };
+
+          check();
+        },
       },
     ];
   }, [{ ...state }]);

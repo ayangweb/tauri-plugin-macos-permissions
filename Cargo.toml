@@ -2,9 +2,9 @@
 name = "tauri-plugin-macos-permissions"
 version = "2.1.1"
 authors = [ "ayangweb" ]
-description = "Check and request macos permissions to accessibility, full disk access and screen recording."
+description = "Support for checking and requesting macos system permissions."
 repository = "https://github.com/ayangweb/tauri-plugin-macos-permissions"
-keywords = ["macos-permissions", "tauri-plugin", "accessibility", "full-disk-access", "screen-recording"]
+keywords = ["tauri-plugin", "macos-permissions", "accessibility", "full-disk-access", "screen-recording"]
 license = "MIT"
 edition = "2021"
 rust-version = "1.77.2"

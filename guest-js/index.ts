@@ -17,6 +17,9 @@ export const COMMAND = {
     "plugin:macos-permissions|check_microphone_permission",
   REQUEST_MICROPHONE_PERMISSION:
     "plugin:macos-permissions|request_microphone_permission",
+  CHECK_CAMERA_PERMISSION: "plugin:macos-permissions|check_camera_permission",
+  REQUEST_CAMERA_PERMISSION:
+    "plugin:macos-permissions|request_camera_permission",
 };
 
 /**
@@ -125,4 +128,31 @@ export const checkMicrophonePermission = () => {
  */
 export const requestMicrophonePermission = () => {
   return invoke(COMMAND.REQUEST_MICROPHONE_PERMISSION);
+};
+
+/**
+ * Check camera permission.
+ *
+ * @returns `true` if camera permission are granted, `false` otherwise.
+ *
+ * @example
+ * import { checkCameraPermission } from "tauri-plugin-macos-permissions-api";
+ *
+ * const authorized = await checkCameraPermission();
+ * console.log(authorized); // false
+ */
+export const checkCameraPermission = () => {
+  return invoke<boolean>(COMMAND.CHECK_CAMERA_PERMISSION);
+};
+
+/**
+ * Request camera permission.
+ *
+ * @example
+ * import { requestCameraPermission } from "tauri-plugin-macos-permissions-api";
+ *
+ * await requestCameraPermission();
+ */
+export const requestCameraPermission = () => {
+  return invoke(COMMAND.REQUEST_CAMERA_PERMISSION);
 };

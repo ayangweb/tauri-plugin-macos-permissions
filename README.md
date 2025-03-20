@@ -2,7 +2,7 @@
 
 > This plugin only works on tauri v2, if you need the v1 plugin, feel free to submit a PR!
 
-Check and request macos permissions to accessibility, full disk access and screen recording.
+Support for checking and requesting macos system permissions.
 
 https://github.com/user-attachments/assets/73d13bff-e7f8-47d4-98d8-3692de852760
 
@@ -64,6 +64,8 @@ console.log(authorized); // true
 | `requestScreenRecordingPermission` | Request screen recording permission. |
 | `checkMicrophonePermission`        | Check microphone permission.         |
 | `requestMicrophonePermission`      | Request microphone permission.       |
+| `checkCameraPermission`            | Check camera permission.             |
+| `requestCameraPermission`          | Request camera permission.           |
 
 ## Example
 
@@ -91,6 +93,10 @@ pnpm tauri dev
 
 - Use [core-graphics](https://crates.io/crates/core-graphics) to check and request screen recording permission.
 
+- Use [objc2](https://github.com/madsmtm/objc2) to check and request microphone or camera permission.
+
 ## Who's Use It
 
 - [EcoPaste](https://github.com/EcoPasteHub/EcoPaste) - Open source cross-platform clipboard management tool.
+
+- [Coco AI](https://github.com/infinilabs/coco-app) - Search, Connect, Collaborate, Your Personal AI Search and Assistant, all in one space.
