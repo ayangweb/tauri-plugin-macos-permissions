@@ -52,9 +52,9 @@ If you need to access the microphone or camera permissions, please update `src-t
 <dict>
      ...
 +    <key>NSMicrophoneUsageDescription</key>
-+    <string>The app requires access to your microphone for the voice recording feature.</string>
++    <string>Describe why your app needs to use microphone permission</string>
 +    <key>NSCameraUsageDescription</key>
-+    <string>The app requires access to your camera for capturing photos and videos.</string>
++    <string>Describe why your app needs to use camera permissions</string>
 </dict>
 </plist>
 ```
