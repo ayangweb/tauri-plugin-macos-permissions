@@ -9,6 +9,8 @@ const COMMANDS: &[&str] = &[
     "request_microphone_permission",
     "check_camera_permission",
     "request_camera_permission",
+    "check_input_monitoring_permission",
+    "request_input_monitoring_permission",
 ];
 
 fn main() {

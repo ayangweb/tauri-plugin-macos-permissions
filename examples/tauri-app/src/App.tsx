@@ -11,6 +11,8 @@ import {
   requestMicrophonePermission,
   checkCameraPermission,
   requestCameraPermission,
+  checkInputMonitoringPermission,
+  requestInputMonitoringPermission,
 } from "tauri-plugin-macos-permissions-api";
 
 const App = () => {
@@ -20,6 +22,7 @@ const App = () => {
     screenRecordingPermission: false,
     microphonePermission: false,
     cameraPermission: false,
+    inputMonitoringPermission: false,
   });
 
   useMount(async () => {
@@ -28,6 +31,7 @@ const App = () => {
     state.screenRecordingPermission = await checkScreenRecordingPermission();
     state.microphonePermission = await checkMicrophonePermission();
     state.cameraPermission = await checkCameraPermission();
+    state.inputMonitoringPermission = await checkInputMonitoringPermission();
   });
 
   const data = useCreation(() => {
@@ -93,6 +97,11 @@ const App = () => {
 
           check();
         },
+      },
+      {
+        label: "Input Monitoring Permission",
+        value: state.inputMonitoringPermission,
+        check: requestInputMonitoringPermission,
       },
     ];
   }, [{ ...state }]);

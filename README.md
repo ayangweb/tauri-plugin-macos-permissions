@@ -82,6 +82,8 @@ console.log(authorized); // true
 | `requestMicrophonePermission`      | Request microphone permission.       |
 | `checkCameraPermission`            | Check camera permission.             |
 | `requestCameraPermission`          | Request camera permission.           |
+| `checkInputMonitoringPermission`   | Check input monitoring permission.   |
+| `requestInputMonitoringPermission` | Request input monitoring permission. |
 
 ## Example
 

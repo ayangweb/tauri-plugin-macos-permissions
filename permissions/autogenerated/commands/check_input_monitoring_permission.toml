@@ -1,0 +1,13 @@
+# Automatically generated - DO NOT EDIT!
+
+"$schema" = "../../schemas/schema.json"
+
+[[permission]]
+identifier = "allow-check-input-monitoring-permission"
+description = "Enables the check_input_monitoring_permission command without any pre-configured scope."
+commands.allow = ["check_input_monitoring_permission"]
+
+[[permission]]
+identifier = "deny-check-input-monitoring-permission"
+description = "Denies the check_input_monitoring_permission command without any pre-configured scope."
+commands.deny = ["check_input_monitoring_permission"]

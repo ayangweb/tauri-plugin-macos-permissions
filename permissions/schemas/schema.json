@@ -49,7 +49,7 @@
           "minimum": 1.0
         },
         "description": {
-          "description": "Human-readable description of what the permission does. Tauri convention is to use <h4> headings in markdown content for Tauri documentation generation purposes.",
+          "description": "Human-readable description of what the permission does. Tauri convention is to use `<h4>` headings in markdown content for Tauri documentation generation purposes.",
           "type": [
             "string",
             "null"
@@ -111,7 +111,7 @@
           "type": "string"
         },
         "description": {
-          "description": "Human-readable description of what the permission does. Tauri internal convention is to use <h4> headings in markdown content for Tauri documentation generation purposes.",
+          "description": "Human-readable description of what the permission does. Tauri internal convention is to use `<h4>` headings in markdown content for Tauri documentation generation purposes.",
           "type": [
             "string",
             "null"
@@ -297,107 +297,152 @@
         {
           "description": "Enables the check_accessibility_permission command without any pre-configured scope.",
           "type": "string",
-          "const": "allow-check-accessibility-permission"
+          "const": "allow-check-accessibility-permission",
+          "markdownDescription": "Enables the check_accessibility_permission command without any pre-configured scope."
         },
         {
           "description": "Denies the check_accessibility_permission command without any pre-configured scope.",
           "type": "string",
-          "const": "deny-check-accessibility-permission"
+          "const": "deny-check-accessibility-permission",
+          "markdownDescription": "Denies the check_accessibility_permission command without any pre-configured scope."
         },
         {
           "description": "Enables the check_camera_permission command without any pre-configured scope.",
           "type": "string",
-          "const": "allow-check-camera-permission"
+          "const": "allow-check-camera-permission",
+          "markdownDescription": "Enables the check_camera_permission command without any pre-configured scope."
         },
         {
           "description": "Denies the check_camera_permission command without any pre-configured scope.",
           "type": "string",
-          "const": "deny-check-camera-permission"
+          "const": "deny-check-camera-permission",
+          "markdownDescription": "Denies the check_camera_permission command without any pre-configured scope."
         },
         {
           "description": "Enables the check_full_disk_access_permission command without any pre-configured scope.",
           "type": "string",
-          "const": "allow-check-full-disk-access-permission"
+          "const": "allow-check-full-disk-access-permission",
+          "markdownDescription": "Enables the check_full_disk_access_permission command without any pre-configured scope."
         },
         {
           "description": "Denies the check_full_disk_access_permission command without any pre-configured scope.",
           "type": "string",
-          "const": "deny-check-full-disk-access-permission"
+          "const": "deny-check-full-disk-access-permission",
+          "markdownDescription": "Denies the check_full_disk_access_permission command without any pre-configured scope."
+        },
+        {
+          "description": "Enables the check_input_monitoring_permission command without any pre-configured scope.",
+          "type": "string",
+          "const": "allow-check-input-monitoring-permission",
+          "markdownDescription": "Enables the check_input_monitoring_permission command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the check_input_monitoring_permission command without any pre-configured scope.",
+          "type": "string",
+          "const": "deny-check-input-monitoring-permission",
+          "markdownDescription": "Denies the check_input_monitoring_permission command without any pre-configured scope."
         },
         {
           "description": "Enables the check_microphone_permission command without any pre-configured scope.",
           "type": "string",
-          "const": "allow-check-microphone-permission"
+          "const": "allow-check-microphone-permission",
+          "markdownDescription": "Enables the check_microphone_permission command without any pre-configured scope."
         },
         {
           "description": "Denies the check_microphone_permission command without any pre-configured scope.",
           "type": "string",
-          "const": "deny-check-microphone-permission"
+          "const": "deny-check-microphone-permission",
+          "markdownDescription": "Denies the check_microphone_permission command without any pre-configured scope."
         },
         {
           "description": "Enables the check_screen_recording_permission command without any pre-configured scope.",
           "type": "string",
-          "const": "allow-check-screen-recording-permission"
+          "const": "allow-check-screen-recording-permission",
+          "markdownDescription": "Enables the check_screen_recording_permission command without any pre-configured scope."
         },
         {
           "description": "Denies the check_screen_recording_permission command without any pre-configured scope.",
           "type": "string",
-          "const": "deny-check-screen-recording-permission"
+          "const": "deny-check-screen-recording-permission",
+          "markdownDescription": "Denies the check_screen_recording_permission command without any pre-configured scope."
         },
         {
           "description": "Enables the request_accessibility_permission command without any pre-configured scope.",
           "type": "string",
-          "const": "allow-request-accessibility-permission"
+          "const": "allow-request-accessibility-permission",
+          "markdownDescription": "Enables the request_accessibility_permission command without any pre-configured scope."
         },
         {
           "description": "Denies the request_accessibility_permission command without any pre-configured scope.",
           "type": "string",
-          "const": "deny-request-accessibility-permission"
+          "const": "deny-request-accessibility-permission",
+          "markdownDescription": "Denies the request_accessibility_permission command without any pre-configured scope."
         },
         {
           "description": "Enables the request_camera_permission command without any pre-configured scope.",
           "type": "string",
-          "const": "allow-request-camera-permission"
+          "const": "allow-request-camera-permission",
+          "markdownDescription": "Enables the request_camera_permission command without any pre-configured scope."
         },
         {
           "description": "Denies the request_camera_permission command without any pre-configured scope.",
           "type": "string",
-          "const": "deny-request-camera-permission"
+          "const": "deny-request-camera-permission",
+          "markdownDescription": "Denies the request_camera_permission command without any pre-configured scope."
         },
         {
           "description": "Enables the request_full_disk_access_permission command without any pre-configured scope.",
           "type": "string",
-          "const": "allow-request-full-disk-access-permission"
+          "const": "allow-request-full-disk-access-permission",
+          "markdownDescription": "Enables the request_full_disk_access_permission command without any pre-configured scope."
         },
         {
           "description": "Denies the request_full_disk_access_permission command without any pre-configured scope.",
           "type": "string",
-          "const": "deny-request-full-disk-access-permission"
+          "const": "deny-request-full-disk-access-permission",
+          "markdownDescription": "Denies the request_full_disk_access_permission command without any pre-configured scope."
+        },
+        {
+          "description": "Enables the request_input_monitoring_permission command without any pre-configured scope.",
+          "type": "string",
+          "const": "allow-request-input-monitoring-permission",
+          "markdownDescription": "Enables the request_input_monitoring_permission command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the request_input_monitoring_permission command without any pre-configured scope.",
+          "type": "string",
+          "const": "deny-request-input-monitoring-permission",
+          "markdownDescription": "Denies the request_input_monitoring_permission command without any pre-configured scope."
         },
         {
           "description": "Enables the request_microphone_permission command without any pre-configured scope.",
           "type": "string",
-          "const": "allow-request-microphone-permission"
+          "const": "allow-request-microphone-permission",
+          "markdownDescription": "Enables the request_microphone_permission command without any pre-configured scope."
         },
         {
           "description": "Denies the request_microphone_permission command without any pre-configured scope.",
           "type": "string",
-          "const": "deny-request-microphone-permission"
+          "const": "deny-request-microphone-permission",
+          "markdownDescription": "Denies the request_microphone_permission command without any pre-configured scope."
         },
         {
           "description": "Enables the request_screen_recording_permission command without any pre-configured scope.",
           "type": "string",
-          "const": "allow-request-screen-recording-permission"
+          "const": "allow-request-screen-recording-permission",
+          "markdownDescription": "Enables the request_screen_recording_permission command without any pre-configured scope."
         },
         {
           "description": "Denies the request_screen_recording_permission command without any pre-configured scope.",
           "type": "string",
-          "const": "deny-request-screen-recording-permission"
+          "const": "deny-request-screen-recording-permission",
+          "markdownDescription": "Denies the request_screen_recording_permission command without any pre-configured scope."
         },
         {
-          "description": "Default permissions for the plugin",
+          "description": "Default permissions for the plugin\n#### This default permission set includes:\n\n- `allow-check-accessibility-permission`\n- `allow-request-accessibility-permission`\n- `allow-check-full-disk-access-permission`\n- `allow-request-full-disk-access-permission`\n- `allow-check-screen-recording-permission`\n- `allow-request-screen-recording-permission`\n- `allow-check-microphone-permission`\n- `allow-request-microphone-permission`\n- `allow-check-camera-permission`\n- `allow-request-camera-permission`\n- `allow-check-input-monitoring-permission`\n- `allow-request-input-monitoring-permission`",
           "type": "string",
-          "const": "default"
+          "const": "default",
+          "markdownDescription": "Default permissions for the plugin\n#### This default permission set includes:\n\n- `allow-check-accessibility-permission`\n- `allow-request-accessibility-permission`\n- `allow-check-full-disk-access-permission`\n- `allow-request-full-disk-access-permission`\n- `allow-check-screen-recording-permission`\n- `allow-request-screen-recording-permission`\n- `allow-check-microphone-permission`\n- `allow-request-microphone-permission`\n- `allow-check-camera-permission`\n- `allow-request-camera-permission`\n- `allow-check-input-monitoring-permission`\n- `allow-request-input-monitoring-permission`"
         }
       ]
     }

@@ -20,6 +20,10 @@ export const COMMAND = {
   CHECK_CAMERA_PERMISSION: "plugin:macos-permissions|check_camera_permission",
   REQUEST_CAMERA_PERMISSION:
     "plugin:macos-permissions|request_camera_permission",
+  CHECK_INPUT_MONITORING_PERMISSION:
+    "plugin:macos-permissions|check_input_monitoring_permission",
+  REQUEST_INPUT_MONITORING_PERMISSION:
+    "plugin:macos-permissions|request_input_monitoring_permission",
 };
 
 /**
@@ -155,4 +159,31 @@ export const checkCameraPermission = () => {
  */
 export const requestCameraPermission = () => {
   return invoke(COMMAND.REQUEST_CAMERA_PERMISSION);
+};
+
+/**
+ * Check input monitoring permission.
+ *
+ * @returns `true` if input monitoring permission are granted, `false` otherwise.
+ *
+ * @example
+ * import { checkInputMonitoringPermission } from "tauri-plugin-macos-permissions-api";
+ *
+ * const authorized = await checkInputMonitoringPermission();
+ * console.log(authorized); // false
+ */
+export const checkInputMonitoringPermission = () => {
+  return invoke<boolean>(COMMAND.CHECK_INPUT_MONITORING_PERMISSION);
+};
+
+/**
+ * Request input monitoring permission.
+ *
+ * @example
+ * import { requestInputMonitoringPermission } from "tauri-plugin-macos-permissions-api";
+ *
+ * await requestInputMonitoringPermission();
+ */
+export const requestInputMonitoringPermission = () => {
+  return invoke(COMMAND.REQUEST_INPUT_MONITORING_PERMISSION);
 };

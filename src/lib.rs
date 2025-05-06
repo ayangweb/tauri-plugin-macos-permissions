@@ -21,6 +21,8 @@ pub fn init<R: Runtime>() -> TauriPlugin<R> {
             commands::request_microphone_permission,
             commands::check_camera_permission,
             commands::request_camera_permission,
+            commands::check_input_monitoring_permission,
+            commands::request_input_monitoring_permission
         ])
         .build()
 }

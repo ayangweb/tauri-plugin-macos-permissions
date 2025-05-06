@@ -2,6 +2,8 @@
 
 Default permissions for the plugin
 
+#### This default permission set includes the following:
+
 - `allow-check-accessibility-permission`
 - `allow-request-accessibility-permission`
 - `allow-check-full-disk-access-permission`
@@ -12,6 +14,8 @@ Default permissions for the plugin
 - `allow-request-microphone-permission`
 - `allow-check-camera-permission`
 - `allow-request-camera-permission`
+- `allow-check-input-monitoring-permission`
+- `allow-request-input-monitoring-permission`
 
 ## Permission Table
 
@@ -96,6 +100,32 @@ Enables the check_full_disk_access_permission command without any pre-configured
 <td>
 
 Denies the check_full_disk_access_permission command without any pre-configured scope.
+
+</td>
+</tr>
+
+<tr>
+<td>
+
+`macos-permissions:allow-check-input-monitoring-permission`
+
+</td>
+<td>
+
+Enables the check_input_monitoring_permission command without any pre-configured scope.
+
+</td>
+</tr>
+
+<tr>
+<td>
+
+`macos-permissions:deny-check-input-monitoring-permission`
+
+</td>
+<td>
+
+Denies the check_input_monitoring_permission command without any pre-configured scope.
 
 </td>
 </tr>
@@ -226,6 +256,32 @@ Enables the request_full_disk_access_permission command without any pre-configur
 <td>
 
 Denies the request_full_disk_access_permission command without any pre-configured scope.
+
+</td>
+</tr>
+
+<tr>
+<td>
+
+`macos-permissions:allow-request-input-monitoring-permission`
+
+</td>
+<td>
+
+Enables the request_input_monitoring_permission command without any pre-configured scope.
+
+</td>
+</tr>
+
+<tr>
+<td>
+
+`macos-permissions:deny-request-input-monitoring-permission`
+
+</td>
+<td>
+
+Denies the request_input_monitoring_permission command without any pre-configured scope.
 
 </td>
 </tr>
