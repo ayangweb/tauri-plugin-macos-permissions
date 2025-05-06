@@ -109,8 +109,6 @@ pnpm tauri dev
 
 - Use [FullDiskAccess](https://github.com/inket/FullDiskAccess/blob/846e04ea2b84fce843f47d7e7f3421189221829c/Sources/FullDiskAccess/FullDiskAccess.swift#L46) to check full disk access permission.
 
-- Use [core-graphics](https://crates.io/crates/core-graphics) to check and request screen recording permission.
-
 - Use [objc2](https://github.com/madsmtm/objc2) to check and request microphone or camera permissions.
 
 ## Who's Use It

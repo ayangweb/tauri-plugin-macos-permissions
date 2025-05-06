@@ -2,7 +2,6 @@ use tauri::{command, AppHandle, Runtime};
 
 #[cfg(target_os = "macos")]
 use {
-    core_graphics::access::ScreenCaptureAccess,
     macos_accessibility_client::accessibility::{
         application_is_trusted, application_is_trusted_with_prompt,
     },
@@ -11,6 +10,13 @@ use {
     std::{fs::read_dir, process::Command},
     tauri::Manager,
 };
+
+#[cfg(target_os = "macos")]
+#[link(name = "CoreGraphics", kind = "framework")]
+extern "C" {
+    fn CGPreflightScreenCaptureAccess() -> bool;
+    fn CGRequestScreenCaptureAccess() -> bool;
+}
 
 #[cfg(target_os = "macos")]
 #[link(name = "IOKit", kind = "framework")]
@@ -127,7 +133,9 @@ pub async fn request_full_disk_access_permission() -> Result<(), String> {
 #[command]
 pub async fn check_screen_recording_permission() -> bool {
     #[cfg(target_os = "macos")]
-    return ScreenCaptureAccess::preflight(&ScreenCaptureAccess::default());
+    unsafe {
+        CGPreflightScreenCaptureAccess()
+    }
 
     #[cfg(not(target_os = "macos"))]
     return true;
@@ -144,7 +152,9 @@ pub async fn check_screen_recording_permission() -> bool {
 #[command]
 pub async fn request_screen_recording_permission() {
     #[cfg(target_os = "macos")]
-    ScreenCaptureAccess::request(&ScreenCaptureAccess::default());
+    unsafe {
+        CGRequestScreenCaptureAccess();
+    }
 }
 
 /// Check microphone permission.
