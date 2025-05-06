@@ -12,6 +12,12 @@ use {
     tauri::Manager,
 };
 
+#[cfg(target_os = "macos")]
+#[link(name = "IOKit", kind = "framework")]
+extern "C" {
+    fn IOHIDCheckAccess(request: u32) -> u32;
+}
+
 /// Check accessibility permission.
 ///
 /// # Returns
@@ -156,16 +162,14 @@ pub async fn request_screen_recording_permission() {
 #[command]
 pub async fn check_microphone_permission() -> bool {
     #[cfg(target_os = "macos")]
-    {
-        unsafe {
-            let av_media_type = NSString::from_str("soun");
-            let status: i32 = msg_send![
-                class!(AVCaptureDevice),
-                authorizationStatusForMediaType: &*av_media_type
-            ];
+    unsafe {
+        let av_media_type = NSString::from_str("soun");
+        let status: i32 = msg_send![
+            class!(AVCaptureDevice),
+            authorizationStatusForMediaType: &*av_media_type
+        ];
 
-            status == 3
-        }
+        status == 3
     }
 
     #[cfg(not(target_os = "macos"))]
@@ -183,17 +187,15 @@ pub async fn check_microphone_permission() -> bool {
 #[command]
 pub async fn request_microphone_permission() -> Result<(), String> {
     #[cfg(target_os = "macos")]
-    {
-        unsafe {
-            let av_media_type = NSString::from_str("soun");
-            type CompletionBlock = Option<extern "C" fn(Bool)>;
-            let completion_block: CompletionBlock = None;
-            let _: () = msg_send![
-                class!(AVCaptureDevice),
-                requestAccessForMediaType: &*av_media_type,
-                completionHandler: completion_block
-            ];
-        }
+    unsafe {
+        let av_media_type = NSString::from_str("soun");
+        type CompletionBlock = Option<extern "C" fn(Bool)>;
+        let completion_block: CompletionBlock = None;
+        let _: () = msg_send![
+            class!(AVCaptureDevice),
+            requestAccessForMediaType: &*av_media_type,
+            completionHandler: completion_block
+        ];
     }
 
     Ok(())
@@ -214,16 +216,14 @@ pub async fn request_microphone_permission() -> Result<(), String> {
 #[command]
 pub async fn check_camera_permission() -> bool {
     #[cfg(target_os = "macos")]
-    {
-        unsafe {
-            let av_media_type = NSString::from_str("vide");
-            let status: i32 = msg_send![
-                class!(AVCaptureDevice),
-                authorizationStatusForMediaType: &*av_media_type
-            ];
+    unsafe {
+        let av_media_type = NSString::from_str("vide");
+        let status: i32 = msg_send![
+            class!(AVCaptureDevice),
+            authorizationStatusForMediaType: &*av_media_type
+        ];
 
-            status == 3
-        }
+        status == 3
     }
 
     #[cfg(not(target_os = "macos"))]
@@ -241,17 +241,15 @@ pub async fn check_camera_permission() -> bool {
 #[command]
 pub async fn request_camera_permission() -> Result<(), String> {
     #[cfg(target_os = "macos")]
-    {
-        unsafe {
-            let av_media_type = NSString::from_str("vide");
-            type CompletionBlock = Option<extern "C" fn(Bool)>;
-            let completion_block: CompletionBlock = None;
-            let _: () = msg_send![
-                class!(AVCaptureDevice),
-                requestAccessForMediaType: &*av_media_type,
-                completionHandler: completion_block
-            ];
-        }
+    unsafe {
+        let av_media_type = NSString::from_str("vide");
+        type CompletionBlock = Option<extern "C" fn(Bool)>;
+        let completion_block: CompletionBlock = None;
+        let _: () = msg_send![
+            class!(AVCaptureDevice),
+            requestAccessForMediaType: &*av_media_type,
+            completionHandler: completion_block
+        ];
     }
 
     Ok(())
@@ -272,17 +270,10 @@ pub async fn request_camera_permission() -> Result<(), String> {
 #[command]
 pub async fn check_input_monitoring_permission() -> bool {
     #[cfg(target_os = "macos")]
-    {
-        #[link(name = "IOKit", kind = "framework")]
-        extern "C" {
-            fn IOHIDCheckAccess(request: u32) -> u32;
-        }
+    unsafe {
+        let status = IOHIDCheckAccess(1);
 
-        unsafe {
-            let status = IOHIDCheckAccess(1);
-
-            status == 0
-        }
+        status == 0
     }
 
     #[cfg(not(target_os = "macos"))]
